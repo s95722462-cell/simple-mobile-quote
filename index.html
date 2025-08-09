@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>견적서</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>견적서</h1>
+        <form id="quoteForm">
+            <div class="top-info-grid">
+                <div class="form-group">
+                    <label for="quoteNumber">작업 기간:</label>
+                    <input type="text" id="quoteNumber" name="quoteNumber">
+                </div>
+                <div class="form-group">
+                    <label for="quoteDate">견적일:</label>
+                    <input type="date" id="quoteDate" name="quoteDate" required>
+                </div>
+            </div>
+
+            <div class="contact-info-grid">
+                <div class="form-group">
+                    <label for="companyName">회사명:</label>
+                    <input type="text" id="companyName" name="companyName">
+                </div>
+                <div class="form-group">
+                    <label for="companyContact">회사 연락처:</label>
+                    <input type="tel" id="companyContact" name="companyContact">
+                </div>
+
+                <div class="form-group">
+                    <label for="customerName">고객명:</label>
+                    <input type="text" id="customerName" name="customerName" required>
+                </div>
+                <div class="form-group">
+                    <label for="customerContact">고객 연락처:</label>
+                    <input type="tel" id="customerContact" name="customerContact">
+                </div>
+            </div>
+
+            <h2>견적 내용</h2>
+            <div class="item-headers">
+                <span class="item-no-header">No.</span>
+                <span class="item-description-header">품명</span>
+                <span class="item-quantity-header">수량</span>
+                <span class="item-unitPrice-header">단가</span>
+                <span class="item-total-header">금액</span>
+                <span class="item-remarks-header">비고</span>
+            </div>
+            <div id="itemsContainer">
+                <!-- Item rows will be added here by JavaScript -->
+            </div>
+            
+            <div class="button-group">
+                <button type="button" id="addItem">항목 추가</button>
+                <button type="button" id="removeItem">항목 삭제</button>
+            </div>
+
+            <div class="total-section">
+                <span>총 합계:</span>
+                <span id="grandTotal">0원</span>
+            </div>
+
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

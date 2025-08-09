@@ -1,0 +1,210 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex; /* Use flex to center container vertically if it's shorter than viewport */
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Align content to top */
+}
+
+.container {
+    max-width: 600px;
+    width: 95%; /* Use a bit more width on mobile */
+    margin: 10px auto; /* Reduced top/bottom margin */
+    padding: 15px; /* Reduced padding */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #0056b3;
+    margin-top: 10px; /* Reduced margin */
+    margin-bottom: 10px; /* Reduced margin */
+}
+
+.form-group {
+    margin-bottom: 10px; /* Reduced margin */
+}
+
+label {
+    display: block; /* Reverted to block display */
+    margin-bottom: 3px; /* Reduced margin */
+    font-weight: bold;
+    font-size: 0.9em; /* Slightly smaller label font */
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="tel"] {
+    width: calc(100% - 22px); /* Reverted to original width calculation */
+    padding: 8px; /* Reduced padding */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 15px; /* Slightly smaller input font */
+    box-sizing: border-box;
+}
+
+/* New Grid Layouts for top sections */
+.top-info-grid,
+.contact-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns, always */
+    gap: 10px; /* Reduced gap */
+    margin-bottom: 10px; /* Reduced margin */
+}
+
+/* --- CSS Grid for Item Headers and Rows --- */
+.item-headers,
+.item-row {
+    display: grid;
+    grid-template-columns: 0.5fr 2.7fr 1fr 1.5fr 1.5fr 0.625fr; 
+    align-items: center;
+    gap: 0;
+    padding: 0;
+    border-bottom: 1px solid #eee;
+}
+
+.item-headers {
+    font-weight: bold;
+    background-color: #f2f2f2;
+    border-top: 1px solid #eee;
+    margin-top: 10px; /* Reduced margin */
+}
+
+.item-headers > span {
+    padding: 6px 4px; /* Reduced padding */
+    border-right: 1px solid #ddd;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    font-size: 0.85em; /* Slightly smaller header font */
+}
+
+/* Remove border-right for the last item in the row (which is the delete button's container) */
+.item-headers > span:last-child {
+    border-right: none;
+}
+
+/* Specific border adjustments based on user requirements */
+
+/* 금액 and 비고: Should NOT have a line. */
+.item-headers > .item-total-header {
+    border-right: none;
+}
+
+/* 비고 and right edge: Should have a line. */
+.item-remarks-header {
+    border-right: 1px solid #ddd; /* Explicitly add border-right for remarks cell */
+}
+
+/* Item row specific styles */
+.item-row > * {
+    padding: 6px 4px; /* Reduced padding */
+    border-right: none; /* REMOVED VERTICAL LINES FROM ITEM ROWS */
+    height: 100%;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    font-size: 0.9em; /* Slightly smaller row font */
+}
+
+/* Specific alignment for row items */
+.item-row .item-no { justify-content: center; }
+.item-row .description { justify-content: center; }
+.item-row .quantity { justify-content: center; }
+.item-row .unitPrice { justify-content: flex-end; } /* Right-align unit price */
+.item-row .item-total { justify-content: flex-end; } /* Right-align item total */
+
+.item-row input {
+    width: 100%; /* Make input fill its grid cell */
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    text-align: center; 
+}
+
+.item-row input.description {
+    text-align: left; /* Description input should be left-aligned */
+}
+
+.item-row input.unitPrice {
+    text-align: right; /* Right-align unit price input */
+}
+
+/* Styling for remarks cell to contain input and button */
+.item-row .remarks-cell {
+    /* Removed flex styles as button is no longer inside */
+    padding: 5px; /* Adjust padding for the cell itself */
+}
+
+.item-row .remarks-cell input.remarks {
+    flex-grow: 1;
+    flex-shrink: 1;
+    padding: 5px;
+    font-size: 14px; /* Keep remarks input slightly smaller */
+    text-align: left;
+}
+
+.total-section {
+    text-align: center;
+    margin-top: 15px; /* Reduced margin */
+    font-size: 1.1em; /* Slightly smaller font */
+    font-weight: bold;
+    border-top: 1px solid #eee;
+    padding-top: 8px; /* Reduced padding */
+}
+
+.button-group {
+    display: flex;
+    gap: 10px; /* Space between buttons */
+    margin-top: 10px;
+}
+
+.button-group button {
+    flex: 1; /* Make buttons share space equally */
+    margin-top: 0; /* Remove individual button margin-top */
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 12px; /* Reduced padding */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 15px; /* Reduced font size */
+    width: 100%;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#addItem {
+    background-color: #28a745;
+}
+
+#addItem:hover {
+    background-color: #218838;
+}
+
+#removeItem {
+    background-color: #dc3545;
+}
+
+#removeItem:hover {
+    background-color: #c82333;
+}
