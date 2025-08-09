@@ -34,21 +34,28 @@ h1, h2 {
 }
 
 .form-group {
-    margin-bottom: 5px; /* Reduced margin */
+    margin-bottom: 10px; /* Reduced margin */
+    display: flex; /* Make form-group a flex container */
+    align-items: center; /* Vertically align label and input */
+    gap: 5px; /* Space between label and input */
 }
 
 label {
-    display: block; /* Reverted to block display */
-    margin-bottom: 3px; /* Reduced margin */
+    /* display: block; Removed as flex item */
+    margin-bottom: 0; /* Remove bottom margin */
     font-weight: bold;
     font-size: 0.9em; /* Slightly smaller label font */
+    flex-shrink: 0; /* Prevent label from shrinking */
+    flex-basis: 70px; /* Give labels a fixed base width */
+    text-align: right; /* Align label text to right */
 }
 
 input[type="text"],
 input[type="number"],
 input[type="date"],
 input[type="tel"] {
-    width: calc(100% - 22px); /* Reverted to original width calculation */
+    flex-grow: 1; /* Allow input to take remaining space */
+    width: auto; /* Override previous width */
     padding: 8px; /* Reduced padding */
     border: 1px solid #ddd;
     border-radius: 4px;
@@ -61,15 +68,15 @@ input[type="tel"] {
 .contact-info-grid {
     display: grid;
     grid-template-columns: 1fr 1fr; /* Two equal columns, always */
-    gap: 5px; /* Reduced gap */
-    margin-bottom: 5px; /* Reduced margin */
+    gap: 10px; /* Reduced gap */
+    margin-bottom: 10px; /* Reduced margin */
 }
 
 /* --- CSS Grid for Item Headers and Rows --- */
 .item-headers,
 .item-row {
     display: grid;
-    grid-template-columns: 0.5fr 2.7fr 1fr 1.5fr 1.5fr 0.625fr; 
+    grid-template-columns: 0.5fr 1.8fr 1fr 1.95fr 1.95fr 0.625fr; 
     align-items: center;
     gap: 0;
     padding: 0;
