@@ -33,61 +33,39 @@ h1, h2 {
     margin-bottom: 10px; /* Reduced margin */
 }
 
-.form-group {
+/* Table styles for top info */
+.info-table {
+    width: 100%;
+    border-collapse: collapse;
     margin-bottom: 10px; /* Reduced margin */
-    display: flex; /* Make form-group a flex container */
+}
+
+.info-table td {
+    padding: 5px; /* Reduced padding */
+    vertical-align: top;
+    width: 50%; /* Each cell takes 50% width for 2 columns */
+}
+
+.field-wrapper {
+    display: flex;
     align-items: center; /* Vertically align label and input */
     gap: 5px; /* Space between label and input */
 }
 
-label {
-    margin-bottom: 0; /* Remove bottom margin */
-    font-weight: bold;
-    font-size: clamp(0.7em, 2vw, 0.9em); /* Fluid font size for labels */
+.info-table label {
+    font-size: 0.85em; /* Slightly smaller for table labels */
     flex-shrink: 0; /* Prevent label from shrinking */
-    min-width: 60px; /* Minimum width for labels */
+    width: 60px; /* Fixed width for labels in table */
     text-align: right; /* Align label text to right */
 }
 
-input[type="text"],
-input[type="number"],
-input[type="date"],
-input[type="tel"] {
-    /* flex-grow: 1; Removed flex-grow */
-    width: calc(100% - 70px); /* Calculate width based on label min-width + gap */
-    padding: 8px; /* Reduced padding */
+.info-table input {
+    flex-grow: 1; /* Make input fill remaining space */
+    padding: 5px; /* Reduced padding */
+    font-size: 0.9em; /* Slightly smaller for table inputs */
     border: 1px solid #ddd;
     border-radius: 4px;
-    font-size: clamp(0.8em, 2.5vw, 1em); /* Fluid font size for inputs */
     box-sizing: border-box;
-}
-
-/* Specific width adjustments for certain input fields */
-#quoteNumber,
-#companyName,
-#customerName,
-#companyContact,
-#customerContact,
-#quoteDate {
-    width: calc(50% - 35px); /* 50% of parent, minus half of label width and gap */
-    flex-grow: 0; /* Prevent it from growing */
-}
-
-/* New Grid Layouts for top sections */
-.top-info-grid,
-.contact-info-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Two equal columns, always */
-    gap: 5px; /* Reduced gap */
-    margin-bottom: 5px; /* Reduced margin */
-}
-
-/* Media query to stack on very small screens */
-@media (max-width: 400px) {
-    .top-info-grid,
-    .contact-info-grid {
-        grid-template-columns: 1fr; /* Stack on very small screens */
-    }
 }
 
 /* --- CSS Grid for Item Headers and Rows --- */
