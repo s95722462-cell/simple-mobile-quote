@@ -34,7 +34,7 @@ h1, h2 {
 }
 
 .form-group {
-    margin-bottom: 10px; /* Reduced margin */
+    margin-bottom: 5px; /* Reduced margin */
 }
 
 label {
@@ -61,8 +61,8 @@ input[type="tel"] {
 .contact-info-grid {
     display: grid;
     grid-template-columns: 1fr 1fr; /* Two equal columns, always */
-    gap: 10px; /* Reduced gap */
-    margin-bottom: 10px; /* Reduced margin */
+    gap: 5px; /* Reduced gap */
+    margin-bottom: 5px; /* Reduced margin */
 }
 
 /* --- CSS Grid for Item Headers and Rows --- */
