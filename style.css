@@ -33,6 +33,10 @@ h1, h2 {
     margin-bottom: 10px; /* Reduced margin */
 }
 
+.hide-for-capture {
+    display: none !important;
+}
+
 /* Table styles for top info */
 .info-table {
     width: 100%;
@@ -143,15 +147,6 @@ h1, h2 {
 
 /* Styling for remarks cell to contain input and button */
 /* Removed .remarks-cell styles as 비고 column is removed */
-
-.total-section {
-    text-align: right;
-    margin-top: 15px; /* Reduced margin */
-    font-size: 1.1em; /* Slightly smaller font */
-    font-weight: bold;
-    border-top: 1px solid #eee;
-    padding-top: 8px; /* Reduced padding */
-}
 
 .button-group {
     display: flex;
@@ -329,6 +324,17 @@ input[type=number] {
     flex: 1; /* Allow it to take up available space */
 }
 
+.notes-section div {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.notes-section .orientation-notice {
+    font-size: 0.8em;
+    color: #666;
+}
+
 .notes-section label {
     display: block;
     margin-bottom: 5px;
@@ -350,4 +356,19 @@ input[type=number] {
     padding-top: 0;
     border-top: none;
     text-align: right; /* Keep it aligned to the right */
+}
+
+.capture-button {
+    width: 100%; /* Make it full width */
+    background-color: #007bff;
+    color: #000000;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px; /* Match other buttons */
+    font-size: 15px; /* Match other buttons */
+    cursor: pointer;
+}
+
+.capture-button:hover {
+    background-color: #0056b3;
 }

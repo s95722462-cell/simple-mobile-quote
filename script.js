@@ -121,4 +121,33 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log(`Item ${index + 1}: Description=${description}, Quantity=${quantity}, UnitPrice=${unitPrice}`);
         });
     });
+
+    // Capture functionality
+    const captureButton = document.getElementById('captureBtn');
+    const containerToCapture = document.querySelector('.container');
+
+    captureButton.addEventListener('click', () => {
+        // Hide elements that should not be in the capture
+        const elementsToHide = document.querySelectorAll('.no-capture');
+        elementsToHide.forEach(el => el.classList.add('hide-for-capture'));
+
+        html2canvas(containerToCapture, {
+            scale: 2, // Higher resolution
+            useCORS: true
+        }).then(canvas => {
+            // Show the hidden elements again
+            elementsToHide.forEach(el => el.classList.remove('hide-for-capture'));
+
+            // Create a link to download the image
+            const link = document.createElement('a');
+            link.download = '견적서.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }).catch(err => {
+            // Make sure to show elements again even if there's an error
+            elementsToHide.forEach(el => el.classList.remove('hide-for-capture'));
+            console.error('oops, something went wrong!', err);
+            alert('캡쳐에 실패했습니다.');
+        });
+    });
 });
