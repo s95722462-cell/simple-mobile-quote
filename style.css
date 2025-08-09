@@ -102,6 +102,12 @@ h1, h2 {
     border-right: none;
 }
 
+.item-headers .item-quantity-header,
+.item-headers .item-unitPrice-header,
+.item-headers .item-total-header {
+    justify-content: center;
+}
+
 /* Item row specific styles */
 .item-row > * {
     padding: 6px 4px; /* Reduced padding */
