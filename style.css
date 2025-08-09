@@ -53,8 +53,8 @@ input[type="text"],
 input[type="number"],
 input[type="date"],
 input[type="tel"] {
-    flex-grow: 1; /* Allow input to take remaining space */
-    width: auto; /* Override previous width */
+    /* flex-grow: 1; Removed flex-grow */
+    width: calc(100% - 70px); /* Calculate width based on label min-width + gap */
     padding: 8px; /* Reduced padding */
     border: 1px solid #ddd;
     border-radius: 4px;
@@ -69,7 +69,7 @@ input[type="tel"] {
 #companyContact,
 #customerContact,
 #quoteDate {
-    width: 50%; /* Set width to 50% of its parent container */
+    width: calc(50% - 35px); /* 50% of parent, minus half of label width and gap */
     flex-grow: 0; /* Prevent it from growing */
 }
 
