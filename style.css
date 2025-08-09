@@ -286,6 +286,23 @@ button:hover {
     .item-row .description input {
         text-align: left;
     }
+
+    .bottom-container {
+        flex-direction: column;
+        align-items: stretch; /* Make items take full width */
+    }
+
+    .notes-section {
+        margin-bottom: 15px; /* Add space between notes and total */
+    }
+
+    .notes-section textarea {
+        width: 100%; /* Use full width on mobile */
+    }
+
+    .total-section {
+        text-align: right; /* Keep total aligned right */
+    }
 }
 
 /* Hide arrows from number inputs */
