@@ -140,7 +140,7 @@ h1, h2 {
 /* Removed .remarks-cell styles as 비고 column is removed */
 
 .total-section {
-    text-align: center;
+    text-align: right;
     margin-top: 15px; /* Reduced margin */
     font-size: 1.1em; /* Slightly smaller font */
     font-weight: bold;
@@ -188,4 +188,108 @@ button:hover {
 
 #removeItem:hover {
     background-color: #c82333;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    .info-table td {
+        display: block;
+        width: 100%;
+        padding: 5px 0;
+    }
+
+    .field-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .info-table label {
+        text-align: left;
+        margin-bottom: 3px;
+    }
+
+    .info-table input {
+        width: 100%;
+    }
+
+    .item-headers,
+    .item-row {
+        grid-template-columns: 0.5fr 1.5fr 1fr 1.5fr 1.5fr; /* Adjusted for smaller screens */
+        font-size: 0.8em; /* Smaller font for item rows on mobile */
+    }
+
+    .item-headers > span,
+    .item-row > * {
+        padding: 4px 2px; /* Further reduced padding */
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .item-headers {
+        display: none; /* Hide headers on very small screens */
+    }
+
+    .item-row {
+        display: flex;
+        flex-direction: column;
+        padding: 8px 0;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .item-row > * {
+        width: 100%;
+        padding: 4px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .item-row > *::before {
+        font-weight: bold;
+        margin-right: 10px;
+    }
+
+    .item-row .item-no { display: none; }
+    .item-row .description::before { content: "품명:"; }
+    .item-row .quantity::before { content: "수량:"; }
+    .item-row .unitPrice::before { content: "단가:"; }
+    .item-row .item-total::before { content: "금액:"; }
+
+    .item-row input {
+        flex-grow: 1;
+        text-align: right;
+        padding: 5px;
+    }
+
+    .item-row .description {
+        justify-content: flex-start; /* Align description content to the left */
+    }
+
+    .item-row .description input {
+        text-align: left;
+    }
+}
+
+/* Hide arrows from number inputs */
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
 }

@@ -8,32 +8,53 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let itemCounter = 0;
 
-    // Helper function to format number with commas
-    const formatNumberWithCommas = (value) => {
-        if (value === null || value === undefined || value === '') return '';
-        const num = parseFloat(String(value).replace(/,/g, ''));
-        if (isNaN(num)) return '';
-        return num.toLocaleString();
-    };
-
-    // Helper function to parse number from string with commas
-    const parseNumberFromCommas = (value) => {
-        if (value === null || value === undefined || value === '') return 0;
-        const num = parseFloat(String(value).replace(/,/g, ''));
-        return isNaN(num) ? 0 : num;
+    // Helper function to remove commas for calculation
+    const parseFormattedNumber = (value) => {
+        const stringValue = String(value).replace(/,/g, '');
+        // Allow a single '-' to be typed
+        if (stringValue === '-') {
+            return 0; // Treat as 0 for calculation
+        }
+        return parseFloat(stringValue) || 0;
     };
 
     // Function to update item total and grand total
     const updateTotals = () => {
         let grandTotal = 0;
         document.querySelectorAll('.item-row').forEach(row => {
-            const quantity = parseNumberFromCommas(row.querySelector('.quantity').value) || 0;
-            const unitPrice = parseNumberFromCommas(row.querySelector('.unitPrice').value); // Use parse function
+            const quantity = parseFloat(row.querySelector('.quantity').value) || 0;
+            const unitPrice = parseFormattedNumber(row.querySelector('.unitPrice').value);
             const itemTotal = quantity * unitPrice;
-            row.querySelector('.item-total').textContent = `${itemTotal.toLocaleString()}`;
+            row.querySelector('.item-total').textContent = itemTotal.toLocaleString();
             grandTotal += itemTotal;
         });
         grandTotalSpan.textContent = `${grandTotal.toLocaleString()}원`;
+    };
+
+    // Function to handle the unit price input formatting
+    const handleUnitPriceInput = (e) => {
+        const input = e.target;
+        let value = input.value;
+        
+        // Allow only numbers, commas, and a leading minus sign
+        let sanitizedValue = value.replace(/[^\d,-]/g, '');
+        
+        // Do not format if the value is just a minus sign
+        if (sanitizedValue === '-') {
+            input.value = '-';
+            updateTotals();
+            return;
+        }
+
+        // Remove commas for parsing
+        let numberValue = parseFormattedNumber(sanitizedValue);
+
+        // Format the number with commas
+        let formattedValue = numberValue.toLocaleString();
+
+        // Update the input field with the formatted value
+        input.value = formattedValue;
+        updateTotals();
     };
 
     // Function to add a new item row
@@ -41,32 +62,19 @@ document.addEventListener('DOMContentLoaded', () => {
         itemCounter++;
         const itemRow = document.createElement('div');
         itemRow.classList.add('item-row');
+        // Use type="number" for quantity and type="text" for unitPrice
         itemRow.innerHTML = `
             <span class="item-no">${itemCounter}</span>
             <input type="text" class="description" placeholder="품명" required>
-            <input type="text" class="quantity" placeholder="수량" value="1" required>
+            <input type="number" class="quantity" placeholder="수량" required>
             <input type="text" class="unitPrice" placeholder="단가" value="0" required>
             <span class="item-total">0</span>
-        `; // Removed remarks input and remarks-cell div
+        `;
         itemsContainer.appendChild(itemRow);
 
         // Add event listeners for new row
-        const newQuantityInput = itemRow.querySelector('.quantity');
-        const newUnitPriceInput = itemRow.querySelector('.unitPrice');
-
-        newQuantityInput.addEventListener('input', (e) => {
-            const rawValue = e.target.value;
-            const parsedValue = parseNumberFromCommas(rawValue);
-            e.target.value = formatNumberWithCommas(parsedValue);
-            updateTotals();
-        });
-        
-        newUnitPriceInput.addEventListener('input', (e) => {
-            const rawValue = e.target.value;
-            const parsedValue = parseNumberFromCommas(rawValue);
-            e.target.value = formatNumberWithCommas(parsedValue);
-            updateTotals();
-        });
+        itemRow.querySelector('.quantity').addEventListener('input', updateTotals);
+        itemRow.querySelector('.unitPrice').addEventListener('input', handleUnitPriceInput);
 
         updateTotals(); // Update totals after adding new row
     };
@@ -88,10 +96,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Event listener for Remove Item button
     removeItemButton.addEventListener('click', () => {
         const allItemRows = document.querySelectorAll('.item-row');
-        if (allItemRows.length > 1) { // Ensure at least one item remains
+        if (allItemRows.length > 1) {
             allItemRows[allItemRows.length - 1].remove();
-            itemCounter = allItemRows.length - 1; // Update itemCounter
-            // Re-number remaining items
+            itemCounter--;
             document.querySelectorAll('.item-no').forEach((itemNoSpan, index) => {
                 itemNoSpan.textContent = index + 1;
             });
@@ -99,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Event listener for form submission (for demonstration)
+    // Event listener for form submission
     quoteForm.addEventListener('submit', (e) => {
         e.preventDefault();
         alert('견적서 제출 기능은 현재 미구현입니다. (콘솔 확인)');
@@ -109,9 +116,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         document.querySelectorAll('.item-row').forEach((row, index) => {
             const description = row.querySelector('.description').value;
-            const quantity = parseNumberFromCommas(row.querySelector('.quantity').value); 
-            const unitPrice = parseNumberFromCommas(row.querySelector('.unitPrice').value); 
-            // Removed remarks from here
+            const quantity = parseFloat(row.querySelector('.quantity').value) || 0;
+            const unitPrice = parseFormattedNumber(row.querySelector('.unitPrice').value);
             console.log(`Item ${index + 1}: Description=${description}, Quantity=${quantity}, UnitPrice=${unitPrice}`);
         });
     });

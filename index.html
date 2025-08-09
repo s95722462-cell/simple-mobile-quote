@@ -4,195 +4,82 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>견적서</title>
-    <style>
-        body {
-            font-family: 'Noto Sans KR', sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 20px;
-        }
-        .container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            max-width: 900px;
-            margin: auto;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        h1, h2 {
-            text-align: center;
-            color: #0056b3;
-        }
-        .form-grid {
-            display: grid;
-            grid-template-columns: 150px 1fr 150px 1fr;
-            gap: 10px 15px;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        .form-grid label {
-            font-weight: 500;
-            text-align: right;
-            padding-right: 5px;
-            white-space: nowrap;
-        }
-        .form-grid input {
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 14px;
-            width: 100%;
-            box-sizing: border-box;
-        }
-        .item-headers, .item-row {
-            display: grid;
-            grid-template-columns: 50px 1fr 100px 120px 120px;
-            gap: 5px;
-            padding: 5px 0;
-            border-bottom: 1px solid #ddd;
-            align-items: center;
-        }
-        .item-headers {
-            background-color: #f0f0f0;
-            font-weight: bold;
-        }
-        .item-row input {
-            width: 100%;
-            padding: 5px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            text-align: right;
-        }
-        .button-group {
-            display: flex;
-            gap: 10px;
-            margin-top: 10px;
-        }
-        .button-group button {
-            flex: 1;
-            padding: 10px;
-            border: none;
-            border-radius: 4px;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-        }
-        #addItem { background-color: #28a745; }
-        #removeItem { background-color: #dc3545; }
-        .total-section {
-            text-align: right;
-            margin-top: 15px;
-            font-weight: bold;
-        }
-        @media (max-width: 768px) {
-            .form-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            .form-grid label {
-                text-align: left;
-                padding-right: 0;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <h1>견적서</h1>
         <form id="quoteForm">
-            <div class="form-grid">
-                <label for="quoteNumber">작업 기간:</label>
-                <input type="text" id="quoteNumber" name="quoteNumber">
-                <label for="quoteDate">견적일:</label>
-                <input type="date" id="quoteDate" name="quoteDate" required>
-
-                <label for="companyName">회사명:</label>
-                <input type="text" id="companyName" name="companyName">
-                <label for="companyContact">연락처:</label>
-                <input type="tel" id="companyContact" name="companyContact">
-
-                <label for="customerName">고객명:</label>
-                <input type="text" id="customerName" name="customerName" required>
-                <label for="customerContact">연락처:</label>
-                <input type="tel" id="customerContact" name="customerContact">
-            </div>
+            <table class="info-table">
+                <tr>
+                    <td>
+                        <div class="field-wrapper">
+                            <label for="quoteNumber">작업 기간:</label>
+                            <input type="text" id="quoteNumber" name="quoteNumber">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="field-wrapper">
+                            <label for="quoteDate">견적일:</label>
+                            <input type="text" id="quoteDate" name="quoteDate" required>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="field-wrapper">
+                            <label for="companyName">회사명:</label>
+                            <input type="text" id="companyName" name="companyName">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="field-wrapper">
+                            <label for="companyContact">연락처:</label>
+                            <input type="tel" id="companyContact" name="companyContact">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="field-wrapper">
+                            <label for="customerName">고객명:</label>
+                            <input type="text" id="customerName" name="customerName" required>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="field-wrapper">
+                            <label for="customerContact">연락처:</label>
+                            <input type="tel" id="customerContact" name="customerContact">
+                        </div>
+                    </td>
+                </tr>
+            </table>
 
             <h2>견적 내용</h2>
             <div class="item-headers">
-                <span>No.</span>
-                <span>품명</span>
-                <span>수량</span>
-                <span>단가</span>
-                <span>금액</span>
+                <span class="item-no-header">No.</span>
+                <span class="item-description-header">품명</span>
+                <span class="item-quantity-header">수량</span>
+                <span class="item-unitPrice-header">단가</span>
+                <span class="item-total-header">금액</span>
             </div>
-            <div id="itemsContainer"></div>
-
+            <div id="itemsContainer">
+                <!-- Item rows will be added here by JavaScript -->
+            </div>
+            
             <div class="button-group">
                 <button type="button" id="addItem">항목 추가</button>
                 <button type="button" id="removeItem">항목 삭제</button>
             </div>
 
             <div class="total-section">
-                총 합계: <span id="grandTotal">0원</span>
+                <span>총 합계:</span>
+                <span id="grandTotal">0원</span>
             </div>
+
         </form>
     </div>
 
-    <script>
-        const itemsContainer = document.getElementById('itemsContainer');
-        const addItemBtn = document.getElementById('addItem');
-        const removeItemBtn = document.getElementById('removeItem');
-        const grandTotalEl = document.getElementById('grandTotal');
-
-        function parseNumber(str) {
-            return parseFloat(str.replace(/,/g, '')) || 0;
-        }
-
-        function formatNumber(num) {
-            return num.toLocaleString();
-        }
-
-        function updateTotals() {
-            let grandTotal = 0;
-            itemsContainer.querySelectorAll('.item-row').forEach(row => {
-                const qty = parseNumber(row.querySelector('.qty').value);
-                const price = parseNumber(row.querySelector('.price').value);
-                const total = qty * price;
-                row.querySelector('.total').value = formatNumber(total);
-                grandTotal += total;
-            });
-            grandTotalEl.textContent = formatNumber(grandTotal) + '원';
-        }
-
-        function addItem() {
-            const index = itemsContainer.children.length + 1;
-            const row = document.createElement('div');
-            row.className = 'item-row';
-            row.innerHTML = `
-                <span>${index}</span>
-                <input type="text" name="itemName${index}" placeholder="품명">
-                <input type="text" class="qty" name="itemQty${index}" placeholder="수량">
-                <input type="text" class="price" name="itemPrice${index}" placeholder="단가">
-                <input type="text" class="total" name="itemTotal${index}" placeholder="금액" readonly>
-            `;
-            row.querySelectorAll('.qty, .price').forEach(input => {
-                input.addEventListener('input', () => {
-                    input.value = input.value.replace(/[^0-9]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-                    updateTotals();
-                });
-            });
-            itemsContainer.appendChild(row);
-        }
-
-        function removeItem() {
-            if (itemsContainer.children.length > 0) {
-                itemsContainer.removeChild(itemsContainer.lastChild);
-                updateTotals();
-            }
-        }
-
-        addItemBtn.addEventListener('click', addItem);
-        removeItemBtn.addEventListener('click', removeItem);
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
