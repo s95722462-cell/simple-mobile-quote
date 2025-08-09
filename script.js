@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const grandTotalSpan = document.getElementById('grandTotal');
     const quoteForm = document.getElementById('quoteForm');
     const quoteDateInput = document.getElementById('quoteDate');
+    const companyInfoInput = document.getElementById('companyInfo');
+    const customerInfoInput = document.getElementById('customerInfo');
 
     let itemCounter = 0;
 
@@ -110,10 +112,10 @@ document.addEventListener('DOMContentLoaded', () => {
     quoteForm.addEventListener('submit', (e) => {
         e.preventDefault();
         alert('화면 캡쳐했습니다');
-        const formData = new FormData(quoteForm);
-        for (let [key, value] of formData.entries()) {
-            console.log(`${key}: ${value}`);
-        }
+        console.log(`Quote Date: ${quoteDateInput.value}`);
+        console.log(`Company Info: ${companyInfoInput.value}`);
+        console.log(`Customer Info: ${customerInfoInput.value}`);
+        // Log item rows as before
         document.querySelectorAll('.item-row').forEach((row, index) => {
             const description = row.querySelector('.description').value;
             const quantity = parseFloat(row.querySelector('.quantity').value) || 0;

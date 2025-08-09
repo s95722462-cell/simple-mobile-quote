@@ -270,23 +270,20 @@ button:hover {
         padding: 5px;
     }
 
-    /* Info table specific adjustments for 2 columns on mobile */
+    /* Info table specific adjustments for single column on mobile */
     .info-table td {
-        display: table-cell; /* Revert to table-cell display */
-        width: 50%; /* Make them share space horizontally */
-        padding: 5px; /* Reset padding */
-        vertical-align: top; /* Ensure top alignment */
+        display: block; /* Make it stack again */
+        width: 100%; /* Full width */
+        padding: 5px 0; /* Reset padding */
     }
 
     .field-wrapper {
-        flex-direction: row; /* Make label and input side-by-side again */
-        align-items: center;
-        gap: 5px;
+        flex-direction: column; /* Label and input stack vertically */
+        align-items: flex-start;
     }
 
     .info-table input {
-        flex: 1; /* Make input fill remaining space */
-        width: auto; /* Let flex handle width */
+        width: 100%; /* Input takes full width */
         max-width: none; /* Remove max-width limit */
         padding: 5px; /* Restore padding for inputs */
     }
