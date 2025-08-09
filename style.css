@@ -35,38 +35,55 @@ h1, h2 {
 
 .form-group {
     margin-bottom: 10px; /* Reduced margin */
+    display: flex; /* Make form-group a flex container */
+    align-items: center; /* Vertically align label and input */
+    gap: 5px; /* Space between label and input */
 }
 
 label {
-    display: block; /* Reverted to block display */
-    margin-bottom: 3px; /* Reduced margin */
+    margin-bottom: 0; /* Remove bottom margin */
     font-weight: bold;
-    font-size: 0.8em; /* Further reduced label font size */
+    font-size: clamp(0.7em, 2vw, 0.9em); /* Fluid font size for labels */
+    flex-shrink: 0; /* Prevent label from shrinking */
+    min-width: 60px; /* Minimum width for labels */
+    text-align: right; /* Align label text to right */
 }
 
 input[type="text"],
 input[type="number"],
 input[type="date"],
 input[type="tel"] {
-    width: calc(100% - 20px); /* Adjust for padding and border */
+    flex-grow: 1; /* Allow input to take remaining space */
+    width: auto; /* Override previous width */
     padding: 8px; /* Reduced padding */
     border: 1px solid #ddd;
     border-radius: 4px;
-    font-size: 14px; /* Further reduced input font size */
+    font-size: clamp(0.8em, 2.5vw, 1em); /* Fluid font size for inputs */
     box-sizing: border-box;
+}
+
+/* Specific width adjustments for certain input fields */
+#quoteNumber,
+#companyName,
+#customerName,
+#companyContact,
+#customerContact,
+#quoteDate {
+    width: 50%; /* Set width to 50% of its parent container */
+    flex-grow: 0; /* Prevent it from growing */
 }
 
 /* New Grid Layouts for top sections */
 .top-info-grid,
 .contact-info-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    grid-template-columns: 1fr 1fr; /* Two equal columns, always */
     gap: 5px; /* Reduced gap */
     margin-bottom: 5px; /* Reduced margin */
 }
 
-/* Re-introduce media query for stacking on very small screens */
-@media (max-width: 480px) {
+/* Media query to stack on very small screens */
+@media (max-width: 400px) {
     .top-info-grid,
     .contact-info-grid {
         grid-template-columns: 1fr; /* Stack on very small screens */
