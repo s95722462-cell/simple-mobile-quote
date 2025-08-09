@@ -55,12 +55,13 @@ h1, h2 {
 .info-table label {
     font-size: 0.85em; /* Slightly smaller for table labels */
     flex-shrink: 0; /* Prevent label from shrinking */
-    width: 60px; /* Fixed width for labels in table */
+    flex-basis: auto; /* Let label content determine its width */
+    width: auto; /* Ensure width is auto */
     text-align: right; /* Align label text to right */
 }
 
 .info-table input {
-    flex: 0 0 calc(66.66% - 5px); /* Input takes 2/3 of remaining space, minus gap */
+    flex: 1; /* Make input fill remaining space */
     padding: 5px; /* Reduced padding */
     font-size: 0.9em; /* Slightly smaller for table inputs */
     border: 1px solid #ddd;
