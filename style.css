@@ -62,6 +62,7 @@ h1, h2 {
     flex-basis: auto; /* Let label content determine its width */
     width: auto; /* Ensure width is auto */
     text-align: right; /* Align label text to right */
+    white-space: nowrap;
 }
 
 .info-table input {
