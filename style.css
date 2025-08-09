@@ -383,4 +383,7 @@ input[type=number] {
     .item-row input.description {
         text-align: right;
     }
+    .notes-section label {
+        text-align: left;
+    }
 }
