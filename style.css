@@ -128,7 +128,7 @@ h1, h2 {
     width: 100%; /* Make input fill its grid cell */
     padding: 0; /* Padding is on the parent now */
     border: none;
-    text-align: center; 
+    text-align: right; /* Changed from center to right */
     font-size: inherit; /* Ensure font size matches the cell */
     background-color: transparent; /* Prevent any default background */
 }
@@ -377,4 +377,10 @@ input[type=number] {
 
 .capture-button:hover {
     background-color: #0056b3;
+}
+
+@media (orientation: portrait) {
+    .item-row input.description {
+        text-align: right;
+    }
 }
