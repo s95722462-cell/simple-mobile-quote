@@ -277,13 +277,7 @@ button:hover {
         padding: 5px;
     }
 
-    .item-row .description {
-        justify-content: flex-start; /* Align description content to the left */
-    }
-
-    .item-row .description input {
-        text-align: left;
-    }
+    
 
     .bottom-container {
         flex-direction: column;

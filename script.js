@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Event listener for form submission
     quoteForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        alert('견적서 제출 기능은 현재 미구현입니다. (콘솔 확인)');
+        alert('화면 캡쳐했습니다');
         const formData = new FormData(quoteForm);
         for (let [key, value] of formData.entries()) {
             console.log(`${key}: ${value}`);
@@ -162,6 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     URL.revokeObjectURL(link.href);
                 }
             }, 'image/png');
+            alert('캡쳐완료하였습니다 보낼 곳에 붙여넣기 하세요');
 
         }).catch(err => {
             // Make sure to show elements again even if there's an error
