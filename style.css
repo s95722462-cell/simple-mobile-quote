@@ -115,7 +115,7 @@ h1, h2 {
 
 /* Item row specific styles */
 .item-row > * {
-    padding: 6px 4px; /* Reduced padding */
+    padding: 10px 4px; /* Consistent padding */
     border-right: none; /* REMOVED VERTICAL LINES FROM ITEM ROWS */
     height: 100%;
     display: flex;
@@ -133,9 +133,11 @@ h1, h2 {
 
 .item-row input {
     width: 100%; /* Make input fill its grid cell */
-    padding: 10px;
+    padding: 0; /* Padding is on the parent now */
     border: none;
     text-align: center; 
+    font-size: inherit; /* Ensure font size matches the cell */
+    background-color: transparent; /* Prevent any default background */
 }
 
 .item-row input.description {
