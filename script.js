@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const itemsContainer = document.getElementById('itemsContainer');
     const addItemButton = document.getElementById('addItem');
-    const removeItemButton = document.getElementById('removeItem'); // Get the global removeItem button
+    const removeItemButton = document.getElementById('removeItem');
     const grandTotalSpan = document.getElementById('grandTotal');
     const quoteForm = document.getElementById('quoteForm');
     const quoteDateInput = document.getElementById('quoteDate');
@@ -47,8 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <input type="text" class="quantity" placeholder="수량" value="1" required>
             <input type="text" class="unitPrice" placeholder="단가" value="0" required>
             <span class="item-total">0</span>
-            <input type="text" class="remarks" placeholder="">
-        `; // Removed removeItem button from here
+        `; // Removed remarks input and remarks-cell div
         itemsContainer.appendChild(itemRow);
 
         // Add event listeners for new row
@@ -86,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Event listener for Add Item button
     addItemButton.addEventListener('click', addItemRow);
 
-    // Event listener for global Remove Item button
+    // Event listener for Remove Item button
     removeItemButton.addEventListener('click', () => {
         const allItemRows = document.querySelectorAll('.item-row');
         if (allItemRows.length > 1) { // Ensure at least one item remains
@@ -112,8 +111,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const description = row.querySelector('.description').value;
             const quantity = parseNumberFromCommas(row.querySelector('.quantity').value); 
             const unitPrice = parseNumberFromCommas(row.querySelector('.unitPrice').value); 
-            const remarks = row.querySelector('.remarks').value; 
-            console.log(`Item ${index + 1}: Description=${description}, Quantity=${quantity}, UnitPrice=${unitPrice}, Remarks=${remarks}`);
+            // Removed remarks from here
+            console.log(`Item ${index + 1}: Description=${description}, Quantity=${quantity}, UnitPrice=${unitPrice}`);
         });
     });
 });

@@ -35,27 +35,20 @@ h1, h2 {
 
 .form-group {
     margin-bottom: 10px; /* Reduced margin */
-    display: flex; /* Make form-group a flex container */
-    align-items: center; /* Vertically align label and input */
-    gap: 5px; /* Space between label and input */
 }
 
 label {
-    /* display: block; Removed as flex item */
-    margin-bottom: 0; /* Remove bottom margin */
+    display: block; /* Reverted to block display */
+    margin-bottom: 3px; /* Reduced margin */
     font-weight: bold;
     font-size: 0.9em; /* Slightly smaller label font */
-    flex-shrink: 0; /* Prevent label from shrinking */
-    flex-basis: 70px; /* Give labels a fixed base width */
-    text-align: right; /* Align label text to right */
 }
 
 input[type="text"],
 input[type="number"],
 input[type="date"],
 input[type="tel"] {
-    flex-grow: 1; /* Allow input to take remaining space */
-    width: auto; /* Override previous width */
+    width: calc(100% - 22px); /* Reverted to original width calculation */
     padding: 8px; /* Reduced padding */
     border: 1px solid #ddd;
     border-radius: 4px;
@@ -68,15 +61,15 @@ input[type="tel"] {
 .contact-info-grid {
     display: grid;
     grid-template-columns: 1fr 1fr; /* Two equal columns, always */
-    gap: 10px; /* Reduced gap */
-    margin-bottom: 10px; /* Reduced margin */
+    gap: 5px; /* Reduced gap */
+    margin-bottom: 5px; /* Reduced margin */
 }
 
 /* --- CSS Grid for Item Headers and Rows --- */
 .item-headers,
 .item-row {
     display: grid;
-    grid-template-columns: 0.5fr 1.8fr 1fr 1.95fr 1.95fr 0.625fr; 
+    grid-template-columns: 0.5fr 1.525fr 1fr 1.95fr 1.95fr; /* Adjusted widths, removed 비고 */
     align-items: center;
     gap: 0;
     padding: 0;
@@ -103,18 +96,6 @@ input[type="tel"] {
 /* Remove border-right for the last item in the row (which is the delete button's container) */
 .item-headers > span:last-child {
     border-right: none;
-}
-
-/* Specific border adjustments based on user requirements */
-
-/* 금액 and 비고: Should NOT have a line. */
-.item-headers > .item-total-header {
-    border-right: none;
-}
-
-/* 비고 and right edge: Should have a line. */
-.item-remarks-header {
-    border-right: 1px solid #ddd; /* Explicitly add border-right for remarks cell */
 }
 
 /* Item row specific styles */
@@ -152,18 +133,7 @@ input[type="tel"] {
 }
 
 /* Styling for remarks cell to contain input and button */
-.item-row .remarks-cell {
-    /* Removed flex styles as button is no longer inside */
-    padding: 5px; /* Adjust padding for the cell itself */
-}
-
-.item-row .remarks-cell input.remarks {
-    flex-grow: 1;
-    flex-shrink: 1;
-    padding: 5px;
-    font-size: 14px; /* Keep remarks input slightly smaller */
-    text-align: left;
-}
+/* Removed .remarks-cell styles as 비고 column is removed */
 
 .total-section {
     text-align: center;
