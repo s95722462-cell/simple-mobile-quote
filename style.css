@@ -56,14 +56,7 @@ h1, h2 {
     gap: 5px; /* Space between label and input */
 }
 
-.info-table label {
-    font-size: 0.85em; /* Slightly smaller for table labels */
-    flex-shrink: 0; /* Prevent label from shrinking */
-    flex-basis: auto; /* Let label content determine its width */
-    width: auto; /* Ensure width is auto */
-    text-align: right; /* Align label text to right */
-    white-space: nowrap;
-}
+
 
 .info-table input {
     flex: 1; /* Make input fill remaining space */
@@ -277,8 +270,18 @@ button:hover {
         padding: 5px;
     }
 
-    
+    /* New styles for info-table alignment */
+    .info-table td {
+        display: block;
+        width: 100%;
+        padding: 5px 0 5px 20px; /* Add left padding */
+    }
 
+    .info-table input {
+        width: calc(100% - 20px); /* Adjust width based on new padding */
+        max-width: 200px; /* Limit max width */
+    }
+    
     .bottom-container {
         flex-direction: column;
         align-items: stretch; /* Make items take full width */
