@@ -41,7 +41,7 @@ h1, h2 {
 }
 
 .info-table td {
-    padding: 5px; /* Reduced padding */
+    padding: 5px;
     vertical-align: top;
     width: 50%; /* Each cell takes 50% width for 2 columns */
 }
@@ -60,7 +60,7 @@ h1, h2 {
 }
 
 .info-table input {
-    flex-grow: 1; /* Make input fill remaining space */
+    flex: 0 0 calc(66.66% - 5px); /* Input takes 2/3 of remaining space, minus gap */
     padding: 5px; /* Reduced padding */
     font-size: 0.9em; /* Slightly smaller for table inputs */
     border: 1px solid #ddd;
