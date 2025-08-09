@@ -41,41 +41,43 @@ label {
     display: block; /* Reverted to block display */
     margin-bottom: 3px; /* Reduced margin */
     font-weight: bold;
-    font-size: 0.9em; /* Slightly smaller label font */
+    font-size: 0.8em; /* Further reduced label font size */
 }
 
 input[type="text"],
 input[type="number"],
 input[type="date"],
 input[type="tel"] {
-    width: calc(100% - 22px); /* Reverted to original width calculation */
+    width: calc(100% - 20px); /* Adjust for padding and border */
     padding: 8px; /* Reduced padding */
     border: 1px solid #ddd;
     border-radius: 4px;
-    font-size: 15px; /* Slightly smaller input font */
+    font-size: 14px; /* Further reduced input font size */
     box-sizing: border-box;
 }
 
-/* New Flexbox Layouts for top sections */
+/* New Grid Layouts for top sections */
 .top-info-grid,
 .contact-info-grid {
-    display: flex; /* Changed to flex */
-    flex-wrap: wrap; /* Allow wrapping */
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
     gap: 5px; /* Reduced gap */
     margin-bottom: 5px; /* Reduced margin */
 }
 
-.top-info-grid .form-group,
-.contact-info-grid .form-group {
-    flex: 1 1 calc(50% - 5px); /* Two columns, adjust for gap */
-    /* On very small screens, they will wrap due to flex-wrap */
+/* Re-introduce media query for stacking on very small screens */
+@media (max-width: 480px) {
+    .top-info-grid,
+    .contact-info-grid {
+        grid-template-columns: 1fr; /* Stack on very small screens */
+    }
 }
 
 /* --- CSS Grid for Item Headers and Rows --- */
 .item-headers,
 .item-row {
     display: grid;
-    grid-template-columns: 0.5fr 1.8fr 1fr 1.95fr 1.95fr; /* Adjusted widths, removed 비고 */
+    grid-template-columns: 0.5fr 1.525fr 1fr 1.95fr 1.95fr; /* Adjusted widths, removed 비고 */
     align-items: center;
     gap: 0;
     padding: 0;
@@ -103,19 +105,6 @@ input[type="tel"] {
 .item-headers > span:last-child {
     border-right: none;
 }
-
-/* Specific border adjustments based on user requirements */
-
-/* 금액 and 비고: Should NOT have a line. */
-.item-headers > .item-total-header {
-    border-right: none;
-}
-
-/* 비고 and right edge: Should have a line. */
-/* Removed as 비고 column is removed */
-/* .item-remarks-header { */
-/*     border-right: 1px solid #ddd; */
-/* } */
 
 /* Item row specific styles */
 .item-row > * {
