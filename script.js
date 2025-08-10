@@ -8,21 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const companyInfoInput = document.getElementById('companyInfo');
     const customerInfoInput = document.getElementById('customerInfo');
 
-    const orientationNotice = document.querySelector('.orientation-notice');
-
-    const checkOrientation = () => {
-        if (window.matchMedia("(orientation: portrait)").matches) {
-            orientationNotice.style.display = 'block'; // Show the notice
-        } else {
-            orientationNotice.style.display = 'none'; // Hide the notice
-        }
-    };
-
-    // Initial check
-    checkOrientation();
-
-    // Listen for orientation changes
-    window.addEventListener('orientationchange', checkOrientation);
+    
 
     let itemCounter = 0;
 
