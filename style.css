@@ -392,7 +392,13 @@ input[type=number] {
     .item-row input.description {
         text-align: right;
     }
-    .notes-section label {
-        text-align: left;
+    
+}
+@media (orientation: portrait) {
+    .notes-section p {
+        text-align: left !important;
+    }
+    .notes-section textarea {
+        text-align: left !important;
     }
 }
