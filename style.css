@@ -307,7 +307,7 @@ button:hover {
     }
 
     .notes-section textarea {
-        width: 100%; /* Use full width on mobile */
+        width: 87.5%; /* Use full width on mobile */
     }
 
     .total-section {
@@ -357,7 +357,7 @@ input[type=number] {
 }
 
 .notes-section textarea {
-    width: 100%; /* Use full width */
+    width: 87.5%; /* Use full width */
     padding: 8px;
     border: 1px solid #ddd;
     border-radius: 4px;
