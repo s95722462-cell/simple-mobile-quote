@@ -141,24 +141,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 const file = new File([blob], "견적서.png", { type: "image/png" });
                 const filesArray = [file];
 
-                if (navigator.canShare && navigator.canShare({ files: filesArray })) {
-                    // Use Web Share API
-                    navigator.share({
-                        files: filesArray,
-                        title: '견적서',
-                        text: '견적서 이미지 파일',
-                    })
-                    .then(() => console.log('Share was successful.'))
-                    .catch((error) => console.log('Sharing failed', error));
-                } else {
-                    // Fallback to download
-                    const link = document.createElement('a');
-                    link.download = '견적서.png';
-                    link.href = URL.createObjectURL(blob);
-                    link.click();
-                    // Clean up the object URL
-                    URL.revokeObjectURL(link.href);
-                }
+                const link = document.createElement('a');
+                link.download = '견적서.png';
+                link.href = URL.createObjectURL(blob);
+                link.click();
+                // Clean up the object URL
+                URL.revokeObjectURL(link.href);
             }, 'image/png');
             alert('캡쳐완료하였습니다 보낼 곳에 붙여넣기 하세요');
 
