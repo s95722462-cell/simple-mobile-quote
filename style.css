@@ -238,7 +238,7 @@ button:hover {
     }
 
     .notes-section p {
-        text-align: left;
+        text-align: left !important;
     }
 }
 
