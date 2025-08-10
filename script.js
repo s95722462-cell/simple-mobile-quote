@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const removeItemButton = document.getElementById('removeItem');
     const grandTotalSpan = document.getElementById('grandTotal');
     const quoteForm = document.getElementById('quoteForm');
-    const quoteDateInput = document.getElementById('quoteDate');
+    
     const companyInfoInput = document.getElementById('companyInfo');
     const customerInfoInput = document.getElementById('customerInfo');
 
@@ -97,13 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateTotals(); // Update totals after adding new row
     };
 
-    // Set initial quote date to today
-    const today = new Date();
-    const yyyy = today.getFullYear();
-    const mm = String(today.getMonth() + 1).padStart(2, '0');
-    const dd = String(today.getDate()).padStart(2, '0');
-    const initialDate = `${yyyy}-${mm}-${dd}`;
-    quoteDateInput.value = initialDate;
+    
 
     // Initial item row
     addItemRow();
@@ -128,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
     quoteForm.addEventListener('submit', (e) => {
         e.preventDefault();
         alert('화면 캡쳐했습니다');
-        console.log(`Quote Date: ${quoteDateInput.value}`);
+        
         console.log(`Company Info: ${companyInfoInput.value}`);
         console.log(`Customer Info: ${customerInfoInput.value}`);
         // Log item rows as before
