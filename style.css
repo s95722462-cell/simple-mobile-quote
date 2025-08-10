@@ -236,6 +236,10 @@ button:hover {
         margin-left: 0;
         padding-left: 0;
     }
+
+    .notes-section p {
+        text-align: left;
+    }
 }
 
 @media (max-width: 480px) {
@@ -353,7 +357,7 @@ input[type=number] {
 }
 
 .notes-section textarea {
-    width: 95%; /* A bit of padding from the edge */
+    width: 100%; /* Use full width */
     padding: 8px;
     border: 1px solid #ddd;
     border-radius: 4px;
