@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
         itemRow.innerHTML = `
             <span class="item-no">${itemCounter}</span>
             <input type="text" class="description" placeholder="품명" required>
-            <input type="number" class="quantity" placeholder="수량" required>
+            <input type="text" class="quantity" placeholder="수량" required>
             <input type="text" class="unitPrice" placeholder="단가" value="0" required>
             <span class="item-total">0</span>
         `;
@@ -125,6 +125,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const containerToCapture = document.querySelector('.container');
 
     captureButton.addEventListener('click', () => {
+        // Get the input field
+        const newInputField = document.getElementById('newInput');
+        let originalPlaceholder = '';
+
+        // Store original placeholder and clear it if it exists
+        if (newInputField) {
+            originalPlaceholder = newInputField.placeholder;
+            newInputField.placeholder = '';
+        }
+
         // Hide elements that should not be in the capture
         const elementsToHide = document.querySelectorAll('.no-capture');
         elementsToHide.forEach(el => el.classList.add('hide-for-capture'));
@@ -135,6 +145,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }).then(canvas => {
             // Show the hidden elements again
             elementsToHide.forEach(el => el.classList.remove('hide-for-capture'));
+
+            // Restore original placeholder
+            if (newInputField) {
+                newInputField.placeholder = originalPlaceholder;
+            }
 
             // --- New Share/Download Logic ---
             canvas.toBlob(function(blob) {
@@ -153,6 +168,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }).catch(err => {
             // Make sure to show elements again even if there's an error
             elementsToHide.forEach(el => el.classList.remove('hide-for-capture'));
+            // Restore original placeholder even if there's an error
+            if (newInputField) {
+                newInputField.placeholder = originalPlaceholder;
+            }
             console.error('oops, something went wrong!', err);
             alert('캡쳐에 실패했습니다.');
         });

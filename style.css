@@ -118,8 +118,8 @@ h1, h2 {
 }
 
 /* Specific alignment for row items */
-.item-row .item-no { justify-content: flex-end; }
-.item-row .description { justify-content: flex-end; }
+.item-row .item-no { justify-content: center; }
+.item-row .description { justify-content: flex-start; }
 .item-row .quantity { justify-content: center; }
 .item-row .unitPrice { justify-content: flex-end; } /* Right-align unit price */
 .item-row .item-total { justify-content: flex-end; } /* Right-align item total */
@@ -134,7 +134,7 @@ h1, h2 {
 }
 
 .item-row input.description {
-    text-align: left; /* Description input should be left-aligned */
+    text-align: left !important; /* Description input should be left-aligned */
 }
 
 .item-row input.unitPrice {
